@@ -2,7 +2,11 @@ import pandas as pd
 import plotly.graph_objs as go
 import plotly.plotly as py
 
-df = pd.read_csv('results.csv')
+# convert date column to actual datetime
+df = pd.read_csv('results.csv', parse_dates=[0], date_parser=lambda x: pd.to_datetime(x))
+
+# convert column to date in my timezone
+df["Date"] = df['Date'].dt.tz_localize('UTC').dt.tz_convert('America/Denver')
 
 download_trace = go.Scatter(
     x=df['Date'],
