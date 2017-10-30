@@ -27,4 +27,4 @@ layout = go.Layout(title='TDS Speedtest',
                    plot_bgcolor='rgb(230, 230,230)')
 fig = go.Figure(data=[download_trace, upload_trace, ping_trace], layout=layout)
 
-py.iplot(fig, filename="download")
+py.plot(fig, filename="download", auto_open=False)
